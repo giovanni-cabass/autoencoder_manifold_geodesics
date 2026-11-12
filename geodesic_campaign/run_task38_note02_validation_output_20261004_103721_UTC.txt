@@ -1,0 +1,140 @@
+🚀 Script: run_task38_note02_validation.py
+📅 Started: 2026-10-04 10:37:21.619726
+Task 38 Phase 10 / Phase 6' — late Note-02 validation (load early oracle + catalog D; energy-set rel_err only)
+Oracle table: D_note02 = L_c + Q4_mid/(2 L_c)  (+O(ξ^5) dropped). Default: load Phase-1.5 task38_note02_oracle_*; --recompute-oracle is DEBUG ONLY.
+Bars policy: frozen=True; median≤0.0001, max≤0.001 (§6.0 freeze 2026-08-28); Task 34 bars NOT imported; ε_floor=1e-12; soft tiny-L_c; undecidable only if bars unset or P_energy=0.
+batch_size=512, recompute_oracle=False
+Knobs: N_c=21, stride=2, N_f=41, K=16, n_iters=100, connectivity=all, far_pair_quantile=0.05
+Thresholds: t_exp=0.001, t_fat=1, t_nlo=0.01, dual_init='on'
+Resolved basenames (task38_campaign_knobs + catalog helper):
+  oracle  = task38_note02_oracle_Nc21_s2.npz
+  split   = task38_pair_split_Nc21_s2_texp1em3.npz
+  catalog_6 = task38_catalog_D_endpoints_6nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+  energy_6  = task38_energy_min_D_gamma_6nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+  note02_6  = task38_note02_validation_6nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+  catalog_18 = task38_catalog_D_endpoints_18nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+  energy_18  = task38_energy_min_D_gamma_18nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+  note02_18  = task38_note02_validation_18nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+  catalog_26 = task38_catalog_D_endpoints_26nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+  energy_26  = task38_energy_min_D_gamma_26nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+  note02_26  = task38_note02_validation_26nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+  summary = task38_note02_validation_summary_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+When connectivity=all: per-connectivity ingredients are produced; campaign binary PASS aggregation is §7.3.1 (26-neighbor decides) — owned by Phase 11. This phase does NOT require 6- or 18-neighbor PASS for a campaign claim.
+Early oracle loaded once: /home/gcabass/cobra/curvature_calculation/python_outputs/energy_campaign_3D_outputs/task38_note02_oracle_Nc21_s2.npz
+  P=42878430, pair_order=lexicographic_i_lt_j_section_0_12
+Device: n/a (default load path — no g / Note-02 recompute)
+================================================================================
+Phase 6' Note-02 late validation — 6-neighbor
+================================================================================
+Loaded catalog artifact: /home/gcabass/cobra/curvature_calculation/python_outputs/energy_campaign_3D_outputs/task38_catalog_D_endpoints_6nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+Loaded energy artifact:  /home/gcabass/cobra/curvature_calculation/python_outputs/energy_campaign_3D_outputs/task38_energy_min_D_gamma_6nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+P=42878430, P_energy=5270205, P_analytic=37608225, P_invalid=0, K=16, N_c=21, N_f=41, stride=2, pair_order=lexicographic_i_lt_j_section_0_12
+Loaded early oracle: /home/gcabass/cobra/curvature_calculation/python_outputs/energy_campaign_3D_outputs/task38_note02_oracle_Nc21_s2.npz
+Production path: using Phase-1.5 L_c / Q4_mid / d_nlo / D_note02 / frac / tiny_Lc (no re-derive)
+Note-02 wall time (from early oracle metadata): 20225.889 s
+tiny_L_c on energy set: 0 / 5270205 (ε_floor=1e-12; report/exclude — not FAIL alone)
+valid energy pairs for rel_err aggregates: 5270205
+Analytic pairs: NOT gated vs Note-02 (vacuous by construction); P_analytic=37608225 (report-only counts).
+Energy-set L_c: min=8.739478e-03, median=3.384234e-01, max=6.759295e-01
+Energy-set D_note02 (finite): n=5270205, median=3.388936e-01, max=6.790533e-01
+frac diagnostic ALL pairs (report-only): median=1.021486e-04, median|frac|=2.102336e-04, max|frac|=6.222266e-03, p95|frac|=1.549039e-03
+frac diagnostic ENERGY set (report-only): median=1.330377e-03, median|frac|=1.428518e-03, max|frac|=6.222266e-03
+Far-pair slice among ENERGY pairs (upper 0.050 by D, n=263511) — REPORT ONLY, not a PASS gate:
+  far median_rel_err=1.528652e-05, far max_rel_err=3.019890e-05, far median|frac|=2.711415e-03, far max|frac|=4.600276e-03
+  far L_c: min=4.901274e-01, median=5.182786e-01, max=6.759295e-01
+  far D_note02: min=4.916415e-01, median=5.196377e-01, max=6.790533e-01
+Optional D vs D_dij (report-only; source=stage_b:task38_stage_b_dijkstra_6nbr_Nc21_s2.npz): frac(D≤D_dij)=1.000000, median_rel=1.415395e-03, max_rel=9.683802e-01
+Soft / comfort (Phase 9, report-only here): comfort_fraction=1.000000, n_soft_node_excursions=745507209, n_steps_outside_6sigma=7384463
+
+--- Energy-set Note-02 gate ingredients (per connectivity) ---
+  median_rel_err = 1.351652e-05  (bar ≤ 0.0001)
+  max_rel_err    = 3.809770e-04  (bar ≤ 0.001)
+  bars_frozen=True; P_energy=5270205; n_valid=5270205
+
+[6nbr] Note-02 per-connectivity gate status: PASS (note02_pass=True; never silent PASS when bars unset or P_energy=0)
+[6nbr] wrote artifact /home/gcabass/cobra/curvature_calculation/python_outputs/energy_campaign_3D_outputs/task38_note02_validation_6nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+[6nbr] oracle source path: /home/gcabass/cobra/curvature_calculation/python_outputs/energy_campaign_3D_outputs/task38_note02_oracle_Nc21_s2.npz
+================================================================================
+Phase 6' Note-02 late validation — 18-neighbor
+================================================================================
+Loaded catalog artifact: /home/gcabass/cobra/curvature_calculation/python_outputs/energy_campaign_3D_outputs/task38_catalog_D_endpoints_18nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+Loaded energy artifact:  /home/gcabass/cobra/curvature_calculation/python_outputs/energy_campaign_3D_outputs/task38_energy_min_D_gamma_18nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+P=42878430, P_energy=5270205, P_analytic=37608225, P_invalid=0, K=16, N_c=21, N_f=41, stride=2, pair_order=lexicographic_i_lt_j_section_0_12
+Loaded early oracle: /home/gcabass/cobra/curvature_calculation/python_outputs/energy_campaign_3D_outputs/task38_note02_oracle_Nc21_s2.npz
+Production path: using Phase-1.5 L_c / Q4_mid / d_nlo / D_note02 / frac / tiny_Lc (no re-derive)
+Note-02 wall time (from early oracle metadata): 20225.889 s
+tiny_L_c on energy set: 0 / 5270205 (ε_floor=1e-12; report/exclude — not FAIL alone)
+valid energy pairs for rel_err aggregates: 5270205
+Analytic pairs: NOT gated vs Note-02 (vacuous by construction); P_analytic=37608225 (report-only counts).
+Energy-set L_c: min=8.739478e-03, median=3.384234e-01, max=6.759295e-01
+Energy-set D_note02 (finite): n=5270205, median=3.388936e-01, max=6.790533e-01
+frac diagnostic ALL pairs (report-only): median=1.021486e-04, median|frac|=2.102336e-04, max|frac|=6.222266e-03, p95|frac|=1.549039e-03
+frac diagnostic ENERGY set (report-only): median=1.330377e-03, median|frac|=1.428518e-03, max|frac|=6.222266e-03
+Far-pair slice among ENERGY pairs (upper 0.050 by D, n=263511) — REPORT ONLY, not a PASS gate:
+  far median_rel_err=1.242463e-05, far max_rel_err=3.019890e-05, far median|frac|=2.711415e-03, far max|frac|=4.600276e-03
+  far L_c: min=4.901274e-01, median=5.182786e-01, max=6.759295e-01
+  far D_note02: min=4.916415e-01, median=5.196377e-01, max=6.790533e-01
+Optional D vs D_dij (report-only; source=stage_b:task38_stage_b_dijkstra_18nbr_Nc21_s2.npz): frac(D≤D_dij)=1.000000, median_rel=2.146943e-04, max_rel=8.929997e-01
+Soft / comfort (Phase 9, report-only here): comfort_fraction=1.000000, n_soft_node_excursions=341968066, n_steps_outside_6sigma=5443056
+
+--- Energy-set Note-02 gate ingredients (per connectivity) ---
+  median_rel_err = 1.303841e-05  (bar ≤ 0.0001)
+  max_rel_err    = 3.809770e-04  (bar ≤ 0.001)
+  bars_frozen=True; P_energy=5270205; n_valid=5270205
+
+[18nbr] Note-02 per-connectivity gate status: PASS (note02_pass=True; never silent PASS when bars unset or P_energy=0)
+[18nbr] wrote artifact /home/gcabass/cobra/curvature_calculation/python_outputs/energy_campaign_3D_outputs/task38_note02_validation_18nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+[18nbr] oracle source path: /home/gcabass/cobra/curvature_calculation/python_outputs/energy_campaign_3D_outputs/task38_note02_oracle_Nc21_s2.npz
+================================================================================
+Phase 6' Note-02 late validation — 26-neighbor
+================================================================================
+Loaded catalog artifact: /home/gcabass/cobra/curvature_calculation/python_outputs/energy_campaign_3D_outputs/task38_catalog_D_endpoints_26nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+Loaded energy artifact:  /home/gcabass/cobra/curvature_calculation/python_outputs/energy_campaign_3D_outputs/task38_energy_min_D_gamma_26nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+P=42878430, P_energy=5270205, P_analytic=37608225, P_invalid=0, K=16, N_c=21, N_f=41, stride=2, pair_order=lexicographic_i_lt_j_section_0_12
+Loaded early oracle: /home/gcabass/cobra/curvature_calculation/python_outputs/energy_campaign_3D_outputs/task38_note02_oracle_Nc21_s2.npz
+Production path: using Phase-1.5 L_c / Q4_mid / d_nlo / D_note02 / frac / tiny_Lc (no re-derive)
+Note-02 wall time (from early oracle metadata): 20225.889 s
+tiny_L_c on energy set: 0 / 5270205 (ε_floor=1e-12; report/exclude — not FAIL alone)
+valid energy pairs for rel_err aggregates: 5270205
+Analytic pairs: NOT gated vs Note-02 (vacuous by construction); P_analytic=37608225 (report-only counts).
+Energy-set L_c: min=8.739478e-03, median=3.384234e-01, max=6.759295e-01
+Energy-set D_note02 (finite): n=5270205, median=3.388936e-01, max=6.790533e-01
+frac diagnostic ALL pairs (report-only): median=1.021486e-04, median|frac|=2.102336e-04, max|frac|=6.222266e-03, p95|frac|=1.549039e-03
+frac diagnostic ENERGY set (report-only): median=1.330377e-03, median|frac|=1.428518e-03, max|frac|=6.222266e-03
+Far-pair slice among ENERGY pairs (upper 0.050 by D, n=263511) — REPORT ONLY, not a PASS gate:
+  far median_rel_err=5.864071e-06, far max_rel_err=3.019890e-05, far median|frac|=2.711413e-03, far max|frac|=4.600276e-03
+  far L_c: min=4.901274e-01, median=5.182786e-01, max=6.759295e-01
+  far D_note02: min=4.916358e-01, median=5.196377e-01, max=6.790533e-01
+Optional D vs D_dij (report-only; source=stage_b:task38_stage_b_dijkstra_26nbr_Nc21_s2.npz): frac(D≤D_dij)=1.000000, median_rel=5.833510e-05, max_rel=8.568248e-01
+Soft / comfort (Phase 9, report-only here): comfort_fraction=1.000000, n_soft_node_excursions=199797798, n_steps_outside_6sigma=4887497
+
+--- Energy-set Note-02 gate ingredients (per connectivity) ---
+  median_rel_err = 1.111199e-05  (bar ≤ 0.0001)
+  max_rel_err    = 3.809770e-04  (bar ≤ 0.001)
+  bars_frozen=True; P_energy=5270205; n_valid=5270205
+
+[26nbr] Note-02 per-connectivity gate status: PASS (note02_pass=True; never silent PASS when bars unset or P_energy=0)
+[26nbr] wrote artifact /home/gcabass/cobra/curvature_calculation/python_outputs/energy_campaign_3D_outputs/task38_note02_validation_26nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+[26nbr] oracle source path: /home/gcabass/cobra/curvature_calculation/python_outputs/energy_campaign_3D_outputs/task38_note02_oracle_Nc21_s2.npz
+
+--- Optional 6/18/26 final D consistency (report-only; §6.5) ---
+  6-vs-18: median |Δ|/max=0.000000e+00, max=2.374100e-05 (not a PASS gate)
+  6-vs-26: median |Δ|/max=0.000000e+00, max=3.661906e-05 (not a PASS gate)
+  18-vs-26: median |Δ|/max=0.000000e+00, max=3.661906e-05 (not a PASS gate)
+
+--- §7.3.1 preview (informational; Phase 11 owns binary campaign PASS report) ---
+  6-neighbor Note-02 gate status: PASS (report-only for campaign binary when all)
+  18-neighbor Note-02 gate status: PASS (report-only for campaign binary when all)
+  26-neighbor Note-02 gate status: PASS (decides campaign under §7.3.1 when bars exist)
+
+Wrote summary: /home/gcabass/cobra/curvature_calculation/python_outputs/energy_campaign_3D_outputs/task38_note02_validation_summary_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+
+================================================================================
+REMINDER (human follow-up only — NOT auto-run; NOT part of automatic PASS): consider a K→2K re-minimize on selected pairs or the full energy set (same Dijkstra-derived shapes, denser nodes). Suggested diagnostic bar if run: relative change in energy D between K and 2K ≤ 1e-3 (design §0.5 / §6.4.1). Choosing which pairs / whether to densify needs user action.
+================================================================================
+
+--- Phase 6' per-connectivity Note-02 gate summary ---
+  6nbr: gate_status=pass note02_pass=True median_rel=1.351652e-05 max_rel=3.809770e-04 P_energy=5270205 n_tiny_Lc=0 oracle_source=loaded_phase_1_5
+  18nbr: gate_status=pass note02_pass=True median_rel=1.303841e-05 max_rel=3.809770e-04 P_energy=5270205 n_tiny_Lc=0 oracle_source=loaded_phase_1_5
+  26nbr: gate_status=pass note02_pass=True median_rel=1.111199e-05 max_rel=3.809770e-04 P_energy=5270205 n_tiny_Lc=0 oracle_source=loaded_phase_1_5
+Phase 10 complete: energy-set Note-02 tables + per-connectivity gate ingredients ready for Phase 11. Final campaign PASS report NOT written here.

@@ -1,0 +1,203 @@
+🚀 Script: run_task38_campaign_report.py
+📅 Started: 2026-10-04 10:47:32.287685
+Task 38 Phase 11 — Campaign report + PASS/FAIL/undecidable
+Knobs: N_c=21, stride=2, N_f=41, K=16, n_iters=100
+Thresholds: t_exp=0.001, t_fat=1, t_nlo=0.01, dual_init='on'
+Bars policy: §6.0 freeze 2026-08-28 — median≤0.0001, max≤0.001; Task 34 bars NOT imported; Phase 11 re-applies GATE_* to Phase-10 median/max (BARS_FROZEN_OVERRIDE=True).
+Resolved basenames (task38_campaign_knobs):
+  report   = task38_campaign_report_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.txt
+  passfail = task38_campaign_pass_fail_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+  summary  = task38_note02_validation_summary_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+Loads Phase-10 validation/summary + energy arm_choice + dual-init mask + pair split; applies §7.3.1; does NOT re-run Stages A–B / energy / Note-02 algebra.
+When connectivity=all: campaign PASS ⇔ 26-neighbor Note-02 PASS.
+Soft / comfort / far-pair / frac / tiny-L_c / analytic / clamps / dual-init stats / K→2K never enter automatic PASS.
+
+Wrote campaign report: /home/gcabass/cobra/curvature_calculation/python_outputs/energy_campaign_3D_outputs/task38_campaign_report_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.txt
+Wrote campaign verdict: /home/gcabass/cobra/curvature_calculation/python_outputs/energy_campaign_3D_outputs/task38_campaign_pass_fail_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+
+==============================================================================
+Task 38 — Campaign report (Phase 11 / design §7)
+==============================================================================
+Scope: PASS / FAIL / undecidable for THIS 3D Task-38 campaign only (not a gate for other designs).
+
+--- Config snapshot (§7.2) ---
+  N_c              = 21
+  stride (s)       = 2
+  N_f              = 41  (= s*(N_c-1)+1)
+  K                = 16
+  n_iters          = 100
+  lr               = 0.001
+  weight_decay     = 0 (fixed; not configurable)
+  connectivity     = all
+  soft 6σ box      = e0∈[-0.286947, -0.057053], e1∈[-0.368, 0.304], e2∈[-0.3015, -0.0495]
+  t_exp            = 0.001
+  t_fat            = 1
+  t_nlo            = 0.01
+  dual_init        = on
+  chart_dim        = 3 (full e0,e1,e2)
+
+--- Split counts (§7.2 / oracle-first) ---
+  P                = 42878430
+  P_analytic       = 37608225  (report-only; not gated)
+  P_energy         = 5270205
+  P_invalid        = 0
+  (Analytic counts / |NLO/LO| distribution never enter automatic PASS.)
+
+--- Artifact index (§0.9 / §7.2) ---
+  [present] grids_section_1: task38_chart_uniform_grids_soft6sigma_Nc21_s2.npz
+  [present] oracle_phase_1_5: task38_note02_oracle_Nc21_s2.npz
+  [present] pair_split_section_6_3: task38_pair_split_Nc21_s2_texp1em3.npz
+  [present] coo_section_2_6nbr: task38_stage_a_undirected_coo_6nbr_Nc21_s2.npz
+  [present] dijkstra_section_3_5_6nbr: task38_stage_b_dijkstra_6nbr_Nc21_s2.npz
+  [present] dual_init_mask_section_3_5_6nbr: task38_dual_init_mask_6nbr_Nc21_s2_texp1em3_tfat1p000000001_tnlo1em2_dualon.npz
+  [present] inits_section_4_7_6nbr: task38_energy_inits_resampled_6nbr_Nc21_s2_K16_texp1em3.npz
+  [present] chords_section_4_6_6nbr: task38_energy_inits_chord_6nbr_Nc21_s2_K16_texp1em3_tfat1p000000001_tnlo1em2_dualon.npz
+  [present] energy_section_5_6nbr: task38_energy_min_D_gamma_6nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+  [present] note02_section_6_6nbr: task38_note02_validation_6nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+  [present] coo_section_2_18nbr: task38_stage_a_undirected_coo_18nbr_Nc21_s2.npz
+  [present] dijkstra_section_3_5_18nbr: task38_stage_b_dijkstra_18nbr_Nc21_s2.npz
+  [present] dual_init_mask_section_3_5_18nbr: task38_dual_init_mask_18nbr_Nc21_s2_texp1em3_tfat1p000000001_tnlo1em2_dualon.npz
+  [present] inits_section_4_7_18nbr: task38_energy_inits_resampled_18nbr_Nc21_s2_K16_texp1em3.npz
+  [present] chords_section_4_6_18nbr: task38_energy_inits_chord_18nbr_Nc21_s2_K16_texp1em3_tfat1p000000001_tnlo1em2_dualon.npz
+  [present] energy_section_5_18nbr: task38_energy_min_D_gamma_18nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+  [present] note02_section_6_18nbr: task38_note02_validation_18nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+  [present] coo_section_2_26nbr: task38_stage_a_undirected_coo_26nbr_Nc21_s2.npz
+  [present] dijkstra_section_3_5_26nbr: task38_stage_b_dijkstra_26nbr_Nc21_s2.npz
+  [present] dual_init_mask_section_3_5_26nbr: task38_dual_init_mask_26nbr_Nc21_s2_texp1em3_tfat1p000000001_tnlo1em2_dualon.npz
+  [present] inits_section_4_7_26nbr: task38_energy_inits_resampled_26nbr_Nc21_s2_K16_texp1em3.npz
+  [present] chords_section_4_6_26nbr: task38_energy_inits_chord_26nbr_Nc21_s2_K16_texp1em3_tfat1p000000001_tnlo1em2_dualon.npz
+  [present] energy_section_5_26nbr: task38_energy_min_D_gamma_26nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+  [present] note02_section_6_26nbr: task38_note02_validation_26nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+  [present] note02_summary_section_6: task38_note02_validation_summary_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+  Tee logs: out_err_files/energy_campaign_3D_logs (Phase 1–10 drivers + this Phase 11)
+
+--- Automatic Note-02 gates (§0.7 / §6.4), energy set per connectivity ---
+  bars_frozen      = True
+  Bars: median_rel_err ≤ 0.0001; max_rel_err ≤ 0.001
+  Task 34 bars NOT imported. Soft tiny-L_c flagged/excluded — existence alone does NOT FAIL.
+  [6nbr]
+    gate_status=PASS note02_pass=True (median_gate=True, max_gate=True)
+    median_rel_err=1.351652e-05, max_rel_err=3.809770e-04, n_valid=5270205, n_tiny_Lc=0
+    frac energy (report-only): median|frac|=1.428518e-03, max|frac|=6.222266e-03
+    frac all pairs (report-only): median|frac|=2.102336e-04, max|frac|=6.222266e-03, p95|frac|=1.549039e-03, p99|frac|=2.417198e-03
+    far-pair slice (report-only, n=263511): median_rel=1.528652e-05, max_rel=3.019890e-05, median|frac|=2.711415e-03, max|frac|=4.600276e-03
+      far L_c: min=4.901274e-01, median=5.182786e-01, max=6.759295e-01
+      far D_note02: min=4.916415e-01, median=5.196377e-01, max=6.790533e-01
+    D vs D^Dij (report-only): frac(D≤D_dij)=1.000000, median_rel=1.415395e-03, max_rel=9.683802e-01
+  [18nbr]
+    gate_status=PASS note02_pass=True (median_gate=True, max_gate=True)
+    median_rel_err=1.303841e-05, max_rel_err=3.809770e-04, n_valid=5270205, n_tiny_Lc=0
+    frac energy (report-only): median|frac|=1.428518e-03, max|frac|=6.222266e-03
+    frac all pairs (report-only): median|frac|=2.102336e-04, max|frac|=6.222266e-03, p95|frac|=1.549039e-03, p99|frac|=2.417198e-03
+    far-pair slice (report-only, n=263511): median_rel=1.242463e-05, max_rel=3.019890e-05, median|frac|=2.711415e-03, max|frac|=4.600276e-03
+      far L_c: min=4.901274e-01, median=5.182786e-01, max=6.759295e-01
+      far D_note02: min=4.916415e-01, median=5.196377e-01, max=6.790533e-01
+    D vs D^Dij (report-only): frac(D≤D_dij)=1.000000, median_rel=2.146943e-04, max_rel=8.929997e-01
+  [26nbr]
+    gate_status=PASS note02_pass=True (median_gate=True, max_gate=True)
+    median_rel_err=1.111199e-05, max_rel_err=3.809770e-04, n_valid=5270205, n_tiny_Lc=0
+    frac energy (report-only): median|frac|=1.428518e-03, max|frac|=6.222266e-03
+    frac all pairs (report-only): median|frac|=2.102336e-04, max|frac|=6.222266e-03, p95|frac|=1.549039e-03, p99|frac|=2.417198e-03
+    far-pair slice (report-only, n=263511): median_rel=5.864071e-06, max_rel=3.019890e-05, median|frac|=2.711413e-03, max|frac|=4.600276e-03
+      far L_c: min=4.901274e-01, median=5.182786e-01, max=6.759295e-01
+      far D_note02: min=4.916358e-01, median=5.196377e-01, max=6.790533e-01
+    D vs D^Dij (report-only): frac(D≤D_dij)=1.000000, median_rel=5.833510e-05, max_rel=8.568248e-01
+
+--- §7.3.1 aggregation (locked) ---
+  connectivity_mode = all
+  rule              = section_7_3_1_when_all_campaign_PASS_iff_26neighbor_Note02_PASS
+  Table: campaign PASS ⇔ 26-neighbor energy-set Note-02 PASS. 6/18 cannot veto or rescue.
+  6-neighbor: PASS (note02_pass=True; report-only)
+  18-neighbor: PASS (note02_pass=True; report-only)
+  26-neighbor: PASS (note02_pass=True; decides)
+  >>> CAMPAIGN STATUS: PASS <<<
+
+--- Explicitly EXCLUDED from automatic PASS predicate (§7.3 / §5.3 / §6.4) ---
+  [excluded] soft_6sigma_excursions
+  [excluded] comfort_fraction
+  [excluded] clamp_counts
+  [excluded] inset_comfort
+  [excluded] full_cube_counters
+  [excluded] far_pair_slice
+  [excluded] frac_distribution
+  [excluded] tiny_Lc_flags
+  [excluded] analytic_pair_counts
+  [excluded] D_vs_Ddij
+  [excluded] six_vs_eighteen_vs_twenty_six_sensitivity
+  [excluded] dual_init_stats
+  [excluded] chord_won_fraction
+  [excluded] k_to_2k_was_run
+  Confirmation: soft-6σ / comfort / far-pair / frac / tiny-L_c / analytic counts / clamps / D vs D^Dij / dual-init stats / K→2K run-status were logged and were NOT OR'd into campaign_pass.
+
+--- Dual-init / split stats (report-only; NOT a PASS input) ---
+  Chord-won fraction = among arm_choice∈{1,2}, fraction with arm_choice=2 (empty denom ⇒ NaN, not 0).
+  NLO-veto count = n_fat_but_nlo_veto from mask sidecar.
+  t_fat            = 1.000000001
+  t_nlo            = 0.01
+  dual_init        = on
+  [6nbr]
+    n_dual              = 5270205
+    chord_won_fraction  = 0.992163 (n_arm_choice_12=5270205, n_chord_won=5228903)
+    NLO-veto count      = 0 (n_fat_but_nlo_veto)
+    invalid-excluded    = 0
+    mask                = task38_dual_init_mask_6nbr_Nc21_s2_texp1em3_tfat1p000000001_tnlo1em2_dualon.npz
+  [18nbr]
+    n_dual              = 5270205
+    chord_won_fraction  = 0.944613 (n_arm_choice_12=5270205, n_chord_won=4978304)
+    NLO-veto count      = 0 (n_fat_but_nlo_veto)
+    invalid-excluded    = 0
+    mask                = task38_dual_init_mask_18nbr_Nc21_s2_texp1em3_tfat1p000000001_tnlo1em2_dualon.npz
+  [26nbr]
+    n_dual              = 5270205
+    chord_won_fraction  = 0.748775 (n_arm_choice_12=5270205, n_chord_won=3946197)
+    NLO-veto count      = 0 (n_fat_but_nlo_veto)
+    invalid-excluded    = 0
+    mask                = task38_dual_init_mask_26nbr_Nc21_s2_texp1em3_tfat1p000000001_tnlo1em2_dualon.npz
+  (Dual-init stats never enter automatic PASS / never waive FAIL.)
+
+--- Domain / comfort counters (§5.3, report-only) ---
+  [6nbr]
+    comfort_fraction=1.000000 (target≥0.9970; is_pass_gate=False)
+    n_clamp_to_decoder_box=0, n_soft_node_excursions=745507209, n_steps_outside_6sigma=7384463, n_pairs_exited_full_cube=0
+    soft_6sigma_is_pass_gate=False
+  [18nbr]
+    comfort_fraction=1.000000 (target≥0.9970; is_pass_gate=False)
+    n_clamp_to_decoder_box=0, n_soft_node_excursions=341968066, n_steps_outside_6sigma=5443056, n_pairs_exited_full_cube=0
+    soft_6sigma_is_pass_gate=False
+  [26nbr]
+    comfort_fraction=1.000000 (target≥0.9970; is_pass_gate=False)
+    n_clamp_to_decoder_box=0, n_soft_node_excursions=199797798, n_steps_outside_6sigma=4887497, n_pairs_exited_full_cube=0
+    soft_6sigma_is_pass_gate=False
+
+--- m_ij vs K on energy set (§3 / §7.2) ---
+  [6nbr] min=34, median=62.0, max=120; frac(m>K)=1.000000, frac(m=K)=0.000000, frac(m<K)=0.000000  (K=16)
+  [18nbr] min=20, median=35.0, max=80; frac(m>K)=1.000000, frac(m=K)=0.000000, frac(m<K)=0.000000  (K=16)
+  [26nbr] min=16, median=30.0, max=54; frac(m>K)=0.999970, frac(m=K)=0.000030, frac(m<K)=0.000000  (K=16)
+
+--- Optional 6/18/26 energy-D sensitivity (report-only) ---
+  6_vs_26_median_rel=0.000000e+00
+  6_vs_26_max_rel=3.661906e-05
+  18_vs_26_median_rel=0.000000e+00
+  18_vs_26_max_rel=3.661906e-05
+  6_vs_18_median_rel=0.000000e+00
+  6_vs_18_max_rel=2.374100e-05
+  (Not a Note-02 substitute; not an automatic PASS gate.)
+
+--- §7.4 On FAIL — diagnose by stage ---
+  Campaign PASS — no §7.4 FAIL diagnosis required. (No waiver issued.)
+
+--- K→2K reminder (§6.4.1) — print only, never auto-launch ---
+  REMINDER (human follow-up only — NOT auto-run; NOT part of automatic PASS): consider a K→2K re-minimize on selected pairs or the full energy set (same Dijkstra-derived shapes, denser nodes). Suggested diagnostic bar if run: relative change in energy D between K and 2K ≤ 1e-3 (design §0.5 / §6.4.1). Choosing which pairs / whether to densify needs user action. This Phase 11 driver does NOT launch that job.
+  k_to_2k_auto_run = False (this driver)
+  k_to_2k_was_run  = False (not part of automatic PASS)
+
+--- Implement-time basename note (task38_campaign_knobs) ---
+  Report TXT : python_outputs/energy_campaign_3D_outputs/task38_campaign_report_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.txt
+  Verdict NPZ: python_outputs/energy_campaign_3D_outputs/task38_campaign_pass_fail_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+  Script     : python_scripts/run_task38_campaign_report.py
+==============================================================================
+
+==============================================================================
+PHASE 11 COMPLETE — CAMPAIGN STATUS: PASS
+Aggregation: section_7_3_1_when_all_campaign_PASS_iff_26neighbor_Note02_PASS
+==============================================================================

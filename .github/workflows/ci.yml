@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run cosmology-autoencoder inference check
+        run: python cosmology_autoencoder/show_teacher_student_loss.py
+      - name: Run chart-flow smoke test
+        run: python chart_flow/run_task43_flat_chart_flow.py

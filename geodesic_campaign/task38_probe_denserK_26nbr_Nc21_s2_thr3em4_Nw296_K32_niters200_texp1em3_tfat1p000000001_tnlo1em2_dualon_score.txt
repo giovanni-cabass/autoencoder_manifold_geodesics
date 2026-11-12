@@ -1,0 +1,43 @@
+Task 42 Phase 5 — denser-K probe score
+Probe scores do not enter section 7.3.1 PASS and are not a campaign verdict.
+This file is not a campaign report and not a pass/fail artifact.
+
+Formulas: delta_D = abs(D32 - D16) / D16
+Formulas: rel_err = abs(D - D_note02) / max(D_note02, eps_floor); task38_note02_core.rel_err_vs_note02; same D_note02 for rel_err_16 and rel_err_32
+Formulas: abs_D_A_minus_D_B = abs(D_pass_a - D_pass_b) on dual rows; NaN where Pass B has no chord; arm_choice 0=non-dual, 1=Dijkstra won or tie, 2=chord won
+eps_floor = 1.000000e-12
+
+Reading guide (no numeric gate, not a campaign verdict): large delta_D with rel_err_32 below rel_err_16 means the K=16 path was under-resolved; small delta_D with rel_err_32 still large means denser K did not move the Note-02 residual; a large abs(D_A-D_B) means the two arms disagree.
+
+Knobs: N_c=21 stride=2 N_f=41 connectivity=26 dual_init=on
+Production D16 locator: K=16 n_iters=100 source=production_k16_energy_D
+Probe continuum: K=32 n_iters=200 thr=0.0003
+Counts: n_worst=296 n_control=296 n_probe=592 n_dual=592
+Thresholds: t_exp=0.001 t_fat=1 t_nlo=0.01
+
+Read Note-02: task38_note02_validation_26nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+Read production energy: task38_energy_min_D_gamma_26nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+Read probe energy: task38_probe_denserK_26nbr_Nc21_s2_thr3em4_Nw296_K32_niters200_texp1em3_tfat1p000000001_tnlo1em2_dualon.npz
+Read Pass A: task38_probe_denserK_26nbr_Nc21_s2_thr3em4_Nw296_K32_niters200_texp1em3_tfat1p000000001_tnlo1em2_dualon_passa.npz
+Read Pass B: task38_probe_denserK_26nbr_Nc21_s2_thr3em4_Nw296_K32_niters200_texp1em3_tfat1p000000001_tnlo1em2_dualon_passb.npz
+Write score TXT: task38_probe_denserK_26nbr_Nc21_s2_thr3em4_Nw296_K32_niters200_texp1em3_tfat1p000000001_tnlo1em2_dualon_score.txt
+Write score NPZ: task38_probe_denserK_26nbr_Nc21_s2_thr3em4_Nw296_K32_niters200_texp1em3_tfat1p000000001_tnlo1em2_dualon_score.npz
+
+--- worst (n=296) ---
+  delta_D: n_finite=296 min=2.555424e-04 median=3.029345e-04 max=3.640321e-04 mean=3.059785e-04
+  rel_err_16: n_finite=296 min=3.000113e-04 median=3.200137e-04 max=3.809770e-04 mean=3.251799e-04
+  rel_err_32: n_finite=296 min=1.122290e-05 median=1.691158e-05 max=8.102978e-05 mean=1.910154e-05
+  abs_D_A_minus_D_B: n_finite=296 min=8.239063e-03 median=1.226865e-02 max=1.446457e-02 mean=1.219482e-02
+  rel_err_32 vs rel_err_16: improved=296 worsened=0 unchanged=0
+  arm_choice: non_dual=0 dijkstra_or_tie=0 chord=296
+
+--- control (n=296) ---
+  delta_D: n_finite=296 min=2.247484e-06 median=8.490402e-06 max=1.703109e-05 mean=7.845483e-06
+  rel_err_16: n_finite=296 min=5.879796e-13 median=9.397168e-10 max=1.914643e-09 mean=9.394336e-10
+  rel_err_32: n_finite=296 min=2.246577e-06 median=8.489175e-06 max=1.703040e-05 mean=7.845466e-06
+  abs_D_A_minus_D_B: n_finite=296 min=1.119637e-06 median=4.245645e-06 max=6.121434e-03 mean=7.529496e-05
+  rel_err_32 vs rel_err_16: improved=0 worsened=296 unchanged=0
+  arm_choice: non_dual=0 dijkstra_or_tie=291 chord=5
+
+Probe scores do not enter section 7.3.1 PASS and are not a campaign verdict.
+phase=42_probe_score

@@ -1,0 +1,58 @@
+------------------------------------------------------------
+Task 38 Phase 9 energy merge (CPU)
+SLURM Job ID: 17369552
+Start Date: Sun Oct  4 10:15:00 UTC 2026
+Nodes: 1  ntasks: 1  cpus-per-task: 1  (no GPUs)
+Knobs: N_C=21 STRIDE=2 K=16 N_ITERS=100
+       LR=1e-3 P_BATCH=64 MAX_PAIRS=0
+       T_EXP=1e-3 T_FAT=1.000000001 T_NLO=1e-2 DUAL_INIT=on
+       CONNECTIVITY=6 ENERGY_PASS=merge
+       (production lr/p_batch/world_size come from arm NPZs)
+CLI args: <none; using env defaults>
+------------------------------------------------------------
+🚀 Script: run_task38_energy_campaign.py
+📅 Started: 2026-10-04 10:15:14.636673
+cwd / main_folder: /home/gcabass/cobra/curvature_calculation
+Tee dir (out_err_files/energy_campaign_3D_logs): /home/gcabass/cobra/curvature_calculation/out_err_files/energy_campaign_3D_logs
+Task 38 Phase 9 — energy-set dual Pass A/B + min D + catalog (mp.spawn + §0.11)
+Config: connectivity=6 → ['6'], energy_pass='merge', n_iters=100, max_pairs=0, weight_decay=0.0 (FIXED — not configurable)
+Config AdamW: lr/p_batch/world_size taken from arm NPZs (merge CLI lr=0.001, p_batch=64 ignored for production metadata)
+Knobs: N_c=21, stride=2, N_f=41, K=16
+Split/dual knobs: t_exp=0.001, t_fat=1, t_nlo=0.01, dual_init='on'
+Smoke note: prefer --n-iters 5 for Nc=3 smoke; production default in knobs remains DEFAULT_N_ITERS=100.
+Resolved basenames (task38_campaign_knobs):
+  grid   = task38_chart_uniform_grids_soft6sigma_Nc21_s2.npz
+  oracle = task38_note02_oracle_Nc21_s2.npz
+  split  = task38_pair_split_Nc21_s2_texp1em3.npz
+  init6  = task38_energy_inits_resampled_6nbr_Nc21_s2_K16_texp1em3.npz
+  init18 = task38_energy_inits_resampled_18nbr_Nc21_s2_K16_texp1em3.npz
+  init26 = task38_energy_inits_resampled_26nbr_Nc21_s2_K16_texp1em3.npz
+  [6nbr] pass_a_arm (load) = task38_energy_pass_a_arm_6nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+  [6nbr] pass_b_arm (load if n_dual>0) = task38_energy_pass_b_arm_6nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+  [6nbr] energy (this job writes) = task38_energy_min_D_gamma_6nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+  [6nbr] catalog (this job writes) = task38_catalog_D_endpoints_6nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+energy_pass=merge: CPU-only combine (CUDA not required); production lr/p_batch/world_size come from arm NPZs
+================================================================================
+Task 38 Phase 9 energy campaign — 6-neighbor (energy_pass='merge')
+================================================================================
+Loaded task38_energy_inits_resampled_6nbr_Nc21_s2_K16_texp1em3.npz: P=42878430, P_energy=5270205, K=16, N_c=21, stride=2, chart_dim=3
+Mask/chord OK: task38_dual_init_mask_6nbr_Nc21_s2_texp1em3_tfat1p000000001_tnlo1em2_dualon.npz / task38_energy_inits_chord_6nbr_Nc21_s2_K16_texp1em3_tfat1p000000001_tnlo1em2_dualon.npz; n_dual(full)=5270205
+n_dual=5270205  (f_dual=1.000000e+00 = n_dual/P_energy, P_energy=5270205)
+[6nbr] loaded Pass A arm: /home/gcabass/cobra/curvature_calculation/python_outputs/energy_campaign_3D_outputs/task38_energy_pass_a_arm_6nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+[6nbr] loaded Pass B arm: /home/gcabass/cobra/curvature_calculation/python_outputs/energy_campaign_3D_outputs/task38_energy_pass_b_arm_6nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+[6nbr] merge AdamW meta from arms: lr=0.001, p_batch=64, world_size=4
+[6nbr] comfort_fraction=1.000000 (target report-only >= 0.997; never automatic PASS)
+[6nbr] n_clamp_to_decoder_box=0, n_soft_node_excursions=745507209, n_steps_outside_6sigma=7384463
+[6nbr] D: min=8.733390e-03, median=3.388981e-01, max=6.790661e-01
+[6nbr] arm_choice: n_dual=5270205, f_dual=1.000000e+00, n_arm1(dij/tie)=41302, n_arm2(chord)=5228903
+[6nbr] production energy write = task38_energy_min_D_gamma_6nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+[6nbr] wrote energy NPZ /home/gcabass/cobra/curvature_calculation/python_outputs/energy_campaign_3D_outputs/task38_energy_min_D_gamma_6nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+[6nbr] wrote catalog NPZ /home/gcabass/cobra/curvature_calculation/python_outputs/energy_campaign_3D_outputs/task38_catalog_D_endpoints_6nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+[6nbr] catalog: P=42878430, n_analytic=37608225, n_energy=5270205, n_invalid=0
+================================================================================
+Phase 9 summary (energy_pass='merge'):
+  [6nbr] energy  = /home/gcabass/cobra/curvature_calculation/python_outputs/energy_campaign_3D_outputs/task38_energy_min_D_gamma_6nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+  [6nbr] catalog = /home/gcabass/cobra/curvature_calculation/python_outputs/energy_campaign_3D_outputs/task38_catalog_D_endpoints_6nbr_Nc21_s2_K16_texp1em3_niters100_tfat1p000000001_tnlo1em2_dualon.npz
+Ready for Phase 10 (late Note-02).
+================================================================================
+✅ Logs saved to: /home/gcabass/cobra/curvature_calculation/out_err_files/energy_campaign_3D_logs

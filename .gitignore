@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Generated at the repo root by utils/workspace_folders.py's os.makedirs
+# call, whenever chart_flow/run_task43_flat_chart_flow.py runs (CI or local)
+/out_err_files/

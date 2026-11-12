@@ -1,0 +1,50 @@
+🚀 Script: compute_ricci_ad_planck_g.py
+📅 Started: 2026-11-08 14:11:55.150640
+torch.cuda.device_count() = 1
+Device: cuda:0
+
+--- Verifying Model Dtype ---
+  [V] param  'mlp.0.weight': torch.float64
+  [V] param  'mlp.0.bias': torch.float64
+  [V] param  'mlp.2.weight': torch.float64
+  [V] param  'mlp.2.bias': torch.float64
+  [V] param  'mlp.4.weight': torch.float64
+  [V] param  'mlp.4.bias': torch.float64
+  [V] param  'mlp.6.weight': torch.float64
+  [V] param  'mlp.6.bias': torch.float64
+  [V] param  'mlp.8.weight': torch.float64
+  [V] param  'mlp.8.bias': torch.float64
+  [V] param  'mlp.10.weight': torch.float64
+  [V] param  'mlp.10.bias': torch.float64
+  [V] param  'mlp.12.weight': torch.float64
+  [V] param  'mlp.12.bias': torch.float64
+  [V] param  'mlp.14.weight': torch.float64
+  [V] param  'mlp.14.bias': torch.float64
+  [V] param  'mlp.16.weight': torch.float64
+  [V] param  'mlp.16.bias': torch.float64
+  [V] param  'mlp.18.weight': torch.float64
+  [V] param  'mlp.18.bias': torch.float64
+  [V] buffer 'lower_bounds': torch.float64
+  [V] buffer 'upper_bounds': torch.float64
+SUCCESS: All parameters and buffers verified as float64.
+
+Ambient G: /home/gcabass/cobra/curvature_calculation/geometry_outputs/induced_metric.npy shape=(16, 16) dtype=torch.float64
+Lattice N=48, nodes=110592, e_axis[0]=-0.9791666666666666
+Flat index n = i*N*N + j*N + k, e_i = -1 + (2*i+1)/N on each axis.
+Computing Ricci scalar on all 110592 nodes (sub_batch=64)...
+Done in 167.8s
+Saved float64 R shape (110592,) to /home/gcabass/cobra/curvature_calculation/geometry_outputs/compute_curvature_at_uniform_grid_outputs/planck_best_fit/ricci_scalar.uniform_grid.npy
+R: n=110592 nonfinite=0
+R: min=-6.4921300704810199e+02 max=4.4517126287849334e+02 mean=-1.6024688139417801e+01 median=-1.0609397957905863e+01
+mathcal_R = 1/sqrt(|R|): n=110592 nonfinite=0
+mathcal_R = 1/sqrt(|R|): min=3.9246993536996011e-02 max=4.4941290559541315e+01 mean=3.6355151871022168e-01 median=2.8459083788910583e-01
+width_2 / mathcal_R: n=110592 nonfinite=0
+width_2 / mathcal_R: min=4.4502504825718395e-02 max=5.0959317383501201e+01 mean=7.8867792757453508e+00 median=7.0276331278029351e+00
+Riemann antisymmetry, first pair: n=110592 nonfinite=0
+Riemann antisymmetry, first pair: min=2.8900816770829729e-13 max=2.9899633472478193e-06 mean=4.6493115463156271e-08 median=4.3414259123925593e-09
+Riemann antisymmetry, second pair: n=110592 nonfinite=0
+Riemann antisymmetry, second pair: min=0.0000000000000000e+00 max=0.0000000000000000e+00 mean=0.0000000000000000e+00 median=0.0000000000000000e+00
+Riemann pair-swap: n=110592 nonfinite=0
+Riemann pair-swap: min=2.0937720711913738e-13 max=2.1142716322447377e-06 mean=3.2884050935153876e-08 median=3.0720015036143287e-09
+
+Finished: 2026-11-08 14:14:43.562604  (elapsed: 0:02:48.411964)
