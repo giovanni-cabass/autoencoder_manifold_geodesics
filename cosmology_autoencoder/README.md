@@ -34,7 +34,12 @@ frozen forward decoder as a distillation teacher — the same decoder reused in
   checkpoint, sitting beside the script.
 - `teachers/teacher_1/` through `teacher_5/` — the five teacher checkpoints
   (`decoder_float64.no_maf.small_arch.no_bn.refine.{8,5,3,3,2}.pth`), same architecture and
-  training lineage as the student.
+  training lineage as the student. Same-size by design, not the usual smaller-student
+  compression setup: the loss is reconstruction against the real SVD-coefficient data
+  *plus* distillation against the five teachers' average (`teacher_mean` in
+  `show_teacher_student_loss.py`), so the ensemble average acts as a noise-cancelling
+  regularizer on top of the direct data fit, not a replacement target to compress
+  toward.
 - `data/` — the small, already-derived $d$/$\theta$ arrays `show_teacher_student_loss.py` needs.
 
 The reconstruction autoencoder and the $e^\mu\to\theta$ MLP themselves (run 0 a baseline, runs
